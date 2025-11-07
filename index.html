@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur ROI Impédancemètre Professionnel - Anovator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">ANOVATOR</div>
+                <h1 class="header-title">Calculateur ROI Impédancemètre Professionnel</h1>
+                <p class="header-subtitle">Découvrez en 2 minutes la rentabilité d'un analyseur corporel Anovator pour votre structure</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Calculator Section -->
+    <main class="main-section">
+        <div class="container">
+            <div class="calculator-wrapper">
+                <!-- Input Section (Left) -->
+                <div class="input-section">
+                    <h2 class="section-title">Vos Informations</h2>
+                    
+                    <!-- Structure Type -->
+                    <div class="form-group">
+                        <label for="structureType" class="form-label">
+                            <span class="label-icon">🏢</span>
+                            Type de structure
+                            <span class="tooltip" data-tooltip="Sélectionnez le type de votre établissement">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="8" cy="8" r="7"/>
+                                    <path d="M8 12V8M8 6h.01"/>
+                                </svg>
+                            </span>
+                        </label>
+                        <select id="structureType" class="form-control">
+                            <option value="">Sélectionnez votre type de structure</option>
+                            <option value="fitness">Salle de sport / Fitness</option>
+                            <option value="medical">Cabinet médical</option>
+                            <option value="kine">Centre de kinésithérapie</option>
+                            <option value="esthetic">Cabinet esthétique / Minceur</option>
+                            <option value="coaching">Studio coaching / EMS</option>
+                        </select>
+                    </div>
+
+                    <!-- Number of Clients -->
+                    <div class="form-group">
+                        <label for="clientCount" class="form-label">
+                            <span class="label-icon">👥</span>
+                            Nombre de clients/patients actuels
+                            <span class="tooltip" data-tooltip="Nombre de membres actifs ou patients mensuels">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="8" cy="8" r="7"/>
+                                    <path d="M8 12V8M8 6h.01"/>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="clientCount" class="form-control" min="0" max="10000" placeholder="Ex: 200" value="200">
+                        <span class="helper-text">Nombre de membres actifs ou patients mensuels</span>
+                    </div>
+
+                    <!-- Monthly Price -->
+                    <div class="form-group">
+                        <label for="monthlyPrice" class="form-label">
+                            <span class="label-icon">💰</span>
+                            Prix moyen abonnement/consultation mensuel
+                            <span class="tooltip" data-tooltip="Prix moyen par client/mois">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="8" cy="8" r="7"/>
+                                    <path d="M8 12V8M8 6h.01"/>
+                                </svg>
+                            </span>
+                        </label>
+                        <div class="input-with-unit">
+                            <input type="number" id="monthlyPrice" class="form-control" min="0" placeholder="Ex: 45" value="45">
+                            <span class="input-unit">€</span>
+                        </div>
+                        <span class="helper-text">Prix moyen par client/mois</span>
+                    </div>
+
+                    <!-- Potential Increase Slider -->
+                    <div class="form-group">
+                        <label for="potentialIncrease" class="form-label">
+                            <span class="label-icon">📈</span>
+                            Potentiel d'augmentation par client
+                            <span class="tooltip" data-tooltip="Augmentation moyenne constatée avec un impédancemètre">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="8" cy="8" r="7"/>
+                                    <path d="M8 12V8M8 6h.01"/>
+                                </svg>
+                            </span>
+                        </label>
+                        <div class="slider-container">
+                            <input type="range" id="potentialIncrease" class="slider" min="5" max="20" value="10" step="1">
+                            <div class="slider-value">
+                                <span id="sliderValue">10</span>€/mois
+                            </div>
+                        </div>
+                        <div class="slider-labels">
+                            <span>5€</span>
+                            <span>20€</span>
+                        </div>
+                        <span class="helper-text">Augmentation moyenne constatée avec un impédancemètre</span>
+                    </div>
+
+                    <!-- Device Price -->
+                    <div class="form-group">
+                        <label for="devicePrice" class="form-label">
+                            <span class="label-icon">🔬</span>
+                            Prix de l'appareil
+                            <span class="tooltip" data-tooltip="Choisissez le modèle adapté à vos besoins">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="8" cy="8" r="7"/>
+                                    <path d="M8 12V8M8 6h.01"/>
+                                </svg>
+                            </span>
+                        </label>
+                        <select id="devicePrice" class="form-control">
+                            <option value="2500">M0 - 2 500€ (Studio budget)</option>
+                            <option value="4500" selected>M1 - 4 500€ (Studio premium)</option>
+                            <option value="10000">M3 - 10 000€ (Professionnel médical)</option>
+                            <option value="12000">A5 - 12 000€ (Premium scan 3D)</option>
+                            <option value="custom">Personnalisé</option>
+                        </select>
+                    </div>
+
+                    <!-- Custom Price Input (Hidden by default) -->
+                    <div class="form-group" id="customPriceGroup" style="display: none;">
+                        <label for="customPrice" class="form-label">
+                            <span class="label-icon">✏️</span>
+                            Prix personnalisé
+                        </label>
+                        <div class="input-with-unit">
+                            <input type="number" id="customPrice" class="form-control" min="0" placeholder="Entrez le prix">
+                            <span class="input-unit">€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section (Right) -->
+                <div class="results-section">
+                    <h2 class="section-title">Votre Rentabilité</h2>
+                    
+                    <div id="resultsContainer" class="results-container">
+                        <!-- Card 1: Monthly Revenue -->
+                        <div class="result-card card-highlight">
+                            <div class="card-icon green">💵</div>
+                            <div class="card-content">
+                                <h3 class="card-title">Revenus Additionnels Mensuels</h3>
+                                <div class="card-value green" id="monthlyRevenue">0€</div>
+                                <p class="card-description">Clients × Augmentation par client</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Yearly Revenue -->
+                        <div class="result-card">
+                            <div class="card-icon green">📊</div>
+                            <div class="card-content">
+                                <h3 class="card-title">Revenus Additionnels Annuels</h3>
+                                <div class="card-value green" id="yearlyRevenue">0€</div>
+                                <p class="card-description">Revenus mensuels × 12 mois</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Payback Period -->
+                        <div class="result-card">
+                            <div class="card-icon" id="paybackIcon">⏱️</div>
+                            <div class="card-content">
+                                <h3 class="card-title">Délai de Rentabilité</h3>
+                                <div class="card-value" id="paybackPeriod">0 mois</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="paybackProgress"></div>
+                                </div>
+                                <p class="card-description" id="paybackAssessment"></p>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: ROI 2 Years -->
+                        <div class="result-card">
+                            <div class="card-icon blue">🎯</div>
+                            <div class="card-content">
+                                <h3 class="card-title">ROI sur 2 ans</h3>
+                                <div class="card-value blue" id="roi2Years">0%</div>
+                                <p class="card-description" id="roi2YearsAmount">Gain net: 0€</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Monthly Financing -->
+                        <div class="result-card">
+                            <div class="card-icon orange">💳</div>
+                            <div class="card-content">
+                                <h3 class="card-title">Mensualité avec Financement</h3>
+                                <div class="card-value orange" id="monthlyFinancing">0€</div>
+                                <p class="card-description" id="financingComparison">Sur 36 mois</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="benefits-title">Pourquoi Choisir Anovator ?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">💰</span>
+                    <p>Prix 20-30% moins cher que Visbody</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🔧</span>
+                    <p>SAV en France sous 48h</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎓</span>
+                    <p>Formation équipe incluse (valeur 800€)</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✅</span>
+                    <p>Garantie 2 ans</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">💳</span>
+                    <p>Financement flexible 0%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Prêt à Booster Votre Activité ?</h2>
+                <p class="cta-subtitle">Recevez votre étude personnalisée et découvrez comment maximiser votre rentabilité</p>
+                
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="scrollToForm()">📥 Télécharger mon étude personnalisée (PDF)</button>
+                    <a href="#" target="_blank" class="btn btn-secondary">📅 Réserver une démo 15 min</a>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form" id="contactForm">
+                    <h3 class="form-title">Recevez Votre Étude Personnalisée</h3>
+                    <form id="leadForm" onsubmit="return handleFormSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">Prénom *</label>
+                                <input type="text" id="firstName" class="form-control" required placeholder="Votre prénom">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" id="email" class="form-control" required placeholder="votre@email.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Téléphone (optionnel)</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="06 12 34 56 78">
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="acceptInfo" required>
+                                <span>J'accepte de recevoir des informations sur les solutions Anovator</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-submit">Recevoir mon étude</button>
+                    </form>
+                </div>
+
+                <!-- Success Message (Hidden by default) -->
+                <div class="success-message" id="successMessage" style="display: none;">
+                    <div class="success-icon">✅</div>
+                    <h3>Merci !</h3>
+                    <p>Votre étude personnalisée arrive dans votre boîte mail.</p>
+                    <p>Un conseiller vous contactera sous 48h pour répondre à vos questions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof-section">
+        <div class="container">
+            <div class="social-proof-grid">
+                <div class="proof-item">
+                    <div class="proof-number">3000+</div>
+                    <div class="proof-label">clubs équipés en Europe</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">5.2 mois</div>
+                    <div class="proof-label">ROI moyen</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">4.8/5</div>
+                    <div class="proof-label">Note clients</div>
+                </div>
+            </div>
+            <p class="proof-note">*Calculs basés sur données réelles de clients Anovator</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Anovator France - Analyseurs de composition corporelle professionnels</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
